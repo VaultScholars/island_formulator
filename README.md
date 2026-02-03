@@ -31,9 +31,23 @@ We are building a digital version of that shelf.
 
 In Week 0, you set up your environment and created a "test app." Now, it's time for the real thing.
 
+### Important: Working Within Your Assignment Repository
+
+You should have already accepted the Week 1 GitHub Classroom assignment and cloned it to your computer. **You'll create your Rails app INSIDE your assignment repository** so everything is organized together.
+
+### Navigate to Your Assignment Repository
+
+First, make sure you're in your Week 1 assignment folder:
+
+```bash
+cd ~/island-formulator-yourusername  # Replace with your actual assignment folder name
+```
+
+**Not sure where it is?** Run `pwd` to see your current location. You should see something like `/home/yourusername/week1-ingredient-tracker-yourusername`.
+
 ### Understanding `rails new`
 
-Open your terminal and navigate to the folder where you want your project to live. Run the following command:
+Now, create the Rails app inside this assignment repository:
 
 ```bash
 rails new island_formulator --database=postgresql --css=tailwind
@@ -50,7 +64,18 @@ Once the command finishes, move into your new project:
 cd island_formulator
 ```
 
-If you open this folder in VS Code (`code .`), you'll see a lot of files. Don't panic! Here are the most important ones for now:
+Your folder structure now looks like this:
+```
+island-formulator-yourusername/
+├── README.md                    # This tutorial file
+└── island_formulator/           # Your Rails app (created just now)
+    ├── app/
+    ├── config/
+    ├── db/
+    └── ... (all Rails files)
+```
+
+If you open the `island_formulator` folder in VS Code (`code .`), you'll see a lot of files. Don't panic! Here are the most important ones for now:
 *   `app/`: This is where 90% of your work happens. It contains your Models, Views, and Controllers (MVC).
 *   `config/routes.rb`: The "traffic cop" of your app. It decides which URL goes to which part of your code.
 *   `db/`: Contains your database configuration and "migrations" (instructions on how to build your database tables).
@@ -337,31 +362,56 @@ rails db:seed
 
 ---
 
-## Step 10: Make Your First Commit
+## Step 10: Commit and Submit Your Work
 
-You've done a lot of work! Let's save it using Git. A "commit" is like a save point in a video game.
+You've done a lot of work! Let's save it using Git and submit your assignment.
 
 ### What is Git?
 Git is a "Version Control System." It tracks every change you make to your code. If you make a mistake, you can go back in time.
 
-### The Workflow
-1.  **Check status**: `git status`
-    *   This shows you which files have changed. They will likely be red.
-2.  **Stage changes**: `git add .`
-    *   The `.` means "add everything." This tells Git you want to include all these changes in your next save point.
-3.  **Commit**: 
+### The Submission Workflow
+
+Since you've been working inside the `island_formulator` folder, we need to go back to the assignment repository root to commit everything.
+
+1.  **Navigate back to assignment root**:
     ```bash
-    git commit -m "feat(ingredients): add CRUD scaffold with validations and Tailwind"
+    cd ..  # This takes you back to island-formulator-yourusername/
+    ```
+
+2.  **Check status**: 
+    ```bash
+    git status
+    ```
+    *   This shows you which files have changed. You should see the entire `island_formulator/` folder listed.
+
+3.  **Stage changes**: 
+    ```bash
+    git add island_formulator
+    ```
+    *   This tells Git you want to include all the Rails app files in your next save point.
+
+4.  **Commit**: 
+    ```bash
+    git commit -m "Complete Week 1: Ingredient Tracker with CRUD and validations"
     ```
     *   The `-m` stands for "message." Always write a clear, descriptive message about what you did.
 
-### Understanding the Commit Message
-We use a format called "Conventional Commits":
-*   `feat`: Short for "feature."
-*   `(ingredients)`: The part of the app we worked on.
-*   The description: A short sentence explaining the change.
+5.  **Push to GitHub (Submit Assignment)**:
+    ```bash
+    git push origin main
+    ```
+    *   This uploads your work to GitHub. Your instructor can now see your completed assignment!
 
-**Verification**: Run `git log` to see your commit history. You should see your new commit at the top!
+### Understanding the Commit Message
+We use clear, descriptive commit messages:
+*   "Complete Week 1" - tells what milestone you reached
+*   "Ingredient Tracker with CRUD and validations" - describes what features you built
+
+**Verification**: 
+- Run `git log` to see your commit history. You should see your new commit at the top!
+- Visit your GitHub assignment repository in your browser. You should see the `island_formulator` folder with all your Rails files.
+
+**🎉 Assignment Submitted!** Your instructor can now check your work.
 
 ---
 
@@ -387,9 +437,5 @@ We use a format called "Conventional Commits":
 **3. Tailwind styles aren't showing up**
 *   **Fix**: Make sure you are running the server using `bin/dev` instead of `bin/rails server` if you are using the standard Rails 8 Tailwind setup, as `bin/dev` starts the CSS watcher.
 
----
 
-## Next Week Preview
-
-Great job! You have a working ingredient tracker. But right now, anyone who visits your site can see and delete your ingredients. Next week, we'll add **Authentication** so you can have your own private account, and we'll add a **Tagging System** to categorize your ingredients even further!
 
