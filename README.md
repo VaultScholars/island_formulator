@@ -8,6 +8,7 @@ Welcome to Week 1 of the Island Formulator project! This week, we're going to bu
 By the end of this tutorial, you'll have a working web application where you can record, view, edit, and delete the raw ingredients you use for your hair care formulations.
 
 **Time Estimate**: 3-4 hours
+
 **What You'll Build**: A "Mini-App" within our project that handles CRUD operations for Ingredients, styled with Tailwind CSS.
 
 ---
